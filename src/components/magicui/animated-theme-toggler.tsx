@@ -1,0 +1,91 @@
+'use client';
+
+import { cn } from '@/lib/utils';
+import { Moon, SunDim } from 'lucide-react';
+import { useTheme } from 'next-themes';
+import { useEffect, useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
+
+type props = {
+  className?: string;
+};
+
+export const AnimatedThemeToggler = ({ className }: props) => {
+  const { setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const changeTheme = async () => {
+    if (!buttonRef.current) return;
+
+    // Toggle between light and dark, ignoring system theme
+    const newTheme = resolvedTheme === 'light' ? 'dark' : 'light';
+
+    await document.startViewTransition(() => {
+      flushSync(() => {
+        setTheme(newTheme);
+      });
+    }).ready;
+
+    const { top, left, width, height } =
+      buttonRef.current.getBoundingClientRect();
+    const y = top + height / 2;
+    const x = left + width / 2;
+
+    const right = window.innerWidth - left;
+    const bottom = window.innerHeight - top;
+    const maxRad = Math.hypot(Math.max(left, right), Math.max(top, bottom));
+
+    document.documentElement.animate(
+      {
+        clipPath: [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${maxRad}px at ${x}px ${y}px)`,
+        ],
+      },
+      {
+        duration: 700,
+        easing: 'ease-in-out',
+        pseudoElement: '::view-transition-new(root)',
+      }
+    );
+  };
+
+  // Render a placeholder during SSR to avoid hydration mismatch
+  if (!mounted) {
+    return (
+      <button
+        ref={buttonRef}
+        className={cn(
+          'focus-visible:ring-ring ring-offset-background hover:bg-accent hover:text-accent-foreground inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
+          className
+        )}
+        aria-label="Toggle theme"
+      >
+        <Moon className="h-4 w-4" />
+      </button>
+    );
+  }
+
+  return (
+    <button
+      ref={buttonRef}
+      onClick={changeTheme}
+      className={cn(
+        'focus-visible:ring-ring ring-offset-background hover:bg-accent hover:text-accent-foreground inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
+        className
+      )}
+      aria-label="Toggle theme"
+    >
+      {resolvedTheme === 'dark' ? (
+        <SunDim className="h-4 w-4" />
+      ) : (
+        <Moon className="h-4 w-4" />
+      )}
+    </button>
+  );
+};

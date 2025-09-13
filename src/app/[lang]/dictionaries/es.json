@@ -1,0 +1,94 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "features": "Características",
+    "docs": "Documentación"
+  },
+  "hero": {
+    "badge": "Boilerplate Full-Stack Moderno",
+    "title": "Construye Más Rápido con",
+    "titleHighlight": "Next.js 15",
+    "description": "Un boilerplate listo para producción con TypeScript, Prisma, autenticación Clerk, componentes shadcn/ui y Tailwind CSS. Comienza a construir tu próximo proyecto en minutos.",
+    "getStarted": "Comenzar",
+    "viewDocs": "Ver Documentación"
+  },
+  "features": {
+    "title": "Todo Lo Que Necesitas",
+    "subtitle": "Pre-configurado con herramientas estándar de la industria y mejores prácticas",
+    "nextjs": {
+      "title": "Next.js 15",
+      "description": "Último App Router con Turbopack para desarrollo ultrarrápido"
+    },
+    "prisma": {
+      "title": "Prisma + PostgreSQL",
+      "description": "ORM de base de datos con tipos seguros y Accelerate para edge computing"
+    },
+    "clerk": {
+      "title": "Clerk Auth",
+      "description": "Solución completa de autenticación con logins sociales y gestión de usuarios"
+    },
+    "shadcn": {
+      "title": "shadcn/ui",
+      "description": "Componentes hermosos y accesibles construidos en primitivos Radix UI"
+    },
+    "typescript": {
+      "title": "TypeScript",
+      "description": "Soporte completo de TypeScript con verificación estricta de tipos e IntelliSense"
+    },
+    "tools": {
+      "title": "Herramientas de Desarrollo",
+      "description": "ESLint, Prettier, Husky y Commitlint para calidad de código"
+    }
+  },
+  "demo": {
+    "title": "Velo En Acción",
+    "components": "Componentes",
+    "progress": "Progreso",
+    "alerts": "Alertas"
+  },
+  "components": {
+    "buttonVariants": {
+      "title": "Variantes de Botón",
+      "description": "Diferentes estilos de botón usando colores del tema"
+    },
+    "badgeVariants": {
+      "title": "Variantes de Insignia",
+      "description": "Indicadores de estado y etiquetas"
+    },
+    "progressIndicators": {
+      "title": "Indicadores de Progreso",
+      "description": "Barras de progreso visuales para estados de carga"
+    },
+    "alertVariants": {
+      "title": "Mensajes de Alerta",
+      "description": "Diferentes tipos de alerta para retroalimentación del usuario"
+    }
+  },
+  "setup": {
+    "title": "Comienza En Minutos",
+    "subtitle": "Sigue estos simples pasos para lanzar tu proyecto",
+    "setupProgress": "Progreso de Configuración",
+    "databaseMigration": "Migración de Base de Datos",
+    "clone": {
+      "title": "Clonar e Instalar",
+      "description": "Obtén el boilerplate e instala las dependencias"
+    },
+    "env": {
+      "title": "Configurar Entorno",
+      "description": "Configura tus variables de entorno"
+    },
+    "database": {
+      "title": "Configurar Base de Datos",
+      "description": "Configura Prisma y PostgreSQL"
+    },
+    "dev": {
+      "title": "Iniciar Desarrollo",
+      "description": "Lanza tu servidor de desarrollo"
+    }
+  },
+  "footer": {
+    "description": "Construido con Next.js, TypeScript y tecnologías web modernas.",
+    "links": "Enlaces Rápidos",
+    "resources": "Recursos"
+  }
+}
