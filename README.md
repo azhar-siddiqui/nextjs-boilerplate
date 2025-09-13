@@ -18,7 +18,7 @@
   <a href="#-quick-start">🚀 Quick Start</a> •
   <a href="#-contributing">🤝 Contributing</a> •
   <a href="https://github.com/The-Lone-Druid/nextjs-boilerplate">📖 Documentation</a> •
-  <a href="https://nextjs-boilerplate-demo.vercel.app">✨ Live Demo</a>
+  <a href="https://nextjs-boilerplate-ultra.vercel.app">✨ Live Demo</a>
 </p>
 
 ---
