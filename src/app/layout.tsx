@@ -33,7 +33,7 @@ export default function RootLayout({
         {/* <ClerkProvider
             publishableKey={clerkPublishableKey}
             appearance={{
-              baseTheme: undefined,
+              baseTheme: shadcn,
             }}
           >
             <ThemeProvider
