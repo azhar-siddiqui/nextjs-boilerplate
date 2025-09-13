@@ -1,254 +1,599 @@
-# Next.js Boilerplate
+# 🚀 Next.js Boilerplate
 
-A modern, full-stack Next.js boilerplate with TypeScript, Prisma, Clerk authentication, shadcn/ui components, and Tailwind CSS. This boilerplate is designed to kickstart your Next.js projects with best practices and essential tools for rapid development.
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js" alt="Next.js" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white" alt="Prisma" />
+  <img src="https://img.shields.io/badge/Clerk-6C47FF?style=for-the-badge&logo=clerk&logoColor=white" alt="Clerk" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License: MIT" />
+  <br />
+  <strong>A production-ready, full-stack Next.js boilerplate with modern tools and best practices</strong>
+  <br />
+  <a href="#-quick-start">🚀 Quick Start</a> •
+  <a href="#-documentation">📖 Documentation</a> •
+  <a href="https://nextjs-boilerplate-demo.vercel.app">✨ Live Demo</a>
+</p>
 
-## Features
+---
 
-- **Next.js 15** with App Router and Turbopack for fast development
-- **TypeScript** for type safety
-- **Prisma** with PostgreSQL and Accelerate for database management
-- **Clerk** for authentication and user management
-- **shadcn/ui** components built on Radix UI primitives
-- **Tailwind CSS v4** for styling
-- **ESLint** and **Prettier** for code quality
-- **Husky** and **Commitlint** for Git hooks and conventional commits
-- **Commitizen** for standardized commit messages
-- Custom scripts for feature development workflow
-- Theme provider with next-themes
-- Responsive UI components
+## ✨ Features
 
-## Prerequisites
+### 🛠️ Core Technologies
+
+| Technology                 | Description                                               |
+| -------------------------- | --------------------------------------------------------- |
+| **⚡ Next.js 15**          | App Router with Turbopack for lightning-fast development  |
+| **🔷 TypeScript**          | Full type safety with strict checking and IntelliSense    |
+| **🗄️ Prisma + PostgreSQL** | Type-safe database ORM with Accelerate for edge computing |
+| **🔐 Clerk Auth**          | Complete authentication solution with social logins       |
+| **🎨 shadcn/ui**           | Beautiful, accessible components built on Radix UI        |
+| **🌈 Tailwind CSS v4**     | Utility-first CSS framework with custom design system     |
+
+### 🧪 Testing & Quality
+
+| Feature         | Description                                       |
+| --------------- | ------------------------------------------------- |
+| **🃏 Jest**     | Unit testing with React Testing Library           |
+| **🌀 Cypress**  | E2E and component testing                         |
+| **🔍 ESLint**   | Code linting with Next.js and accessibility rules |
+| **💅 Prettier** | Code formatting with Tailwind CSS plugin          |
+
+### 🚀 Developer Experience
+
+| Feature                     | Description                                       |
+| --------------------------- | ------------------------------------------------- |
+| **🌐 Internationalization** | Multi-language support (English, Spanish, French) |
+| **🎭 Theme System**         | Dark/light mode with system preference detection  |
+| **🔧 Git Hooks**            | Husky + Commitlint for conventional commits       |
+| **📝 Commitizen**           | Interactive conventional commit messages          |
+| **⚙️ Custom Scripts**       | Feature development workflow automation           |
+
+### 🎯 Additional Features
+
+- **📱 Responsive Design** - Mobile-first approach with adaptive layouts
+- **♿ Accessibility** - WCAG compliant components and keyboard navigation
+- **🎨 Magic UI** - Enhanced UX with animated components
+- **📊 Charts & Data** - Recharts integration for data visualization
+- **📋 Form Handling** - React Hook Form with Zod validation
+- **🎪 Animations** - Motion library for smooth interactions
+
+---
+
+## 📋 Table of Contents
+
+- [🚀 Quick Start](#-quick-start)
+- [📦 Prerequisites](#-prerequisites)
+- [⚡ Installation](#-installation)
+- [🔧 Configuration](#-configuration)
+- [🏃‍♂️ Usage](#️-usage)
+- [📁 Project Structure](#-project-structure)
+- [🎨 Customization](#-customization)
+- [🚀 Deployment](#-deployment)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+- [📚 Learn More](#-learn-more)
+
+---
+
+## 🚀 Quick Start
+
+> Get up and running in less than 5 minutes!
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/The-Lone-Druid/nextjs-boilerplate.git
+cd nextjs-boilerplate
+
+# 2. Install dependencies
+npm install
+
+# 3. Set up environment variables
+cp .env.example .env.local
+
+# 4. Configure your database and Clerk keys in .env.local
+
+# 5. Set up the database
+npx prisma migrate dev
+npx prisma generate
+
+# 6. Start the development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) and start building! 🎉
+
+---
+
+## 📦 Prerequisites
 
 Before you begin, ensure you have the following installed:
 
-- **Node.js** (version 18 or higher)
-- **npm**, **yarn**, **pnpm**, or **bun**
-- **Git**
+### Required
+
+- **Node.js** ≥ 18.0.0
+- **Git** ≥ 2.30.0
 - **PostgreSQL** database (local or cloud)
 
-## Installation
+### Package Managers (choose one)
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/The-Lone-Druid/nextjs-boilerplate.git
-   cd nextjs-boilerplate
-   ```
+- **npm** ≥ 8.0.0
+- **yarn** ≥ 1.22.0
+- **pnpm** ≥ 7.0.0
+- **bun** ≥ 1.0.0
 
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn install
-   # or
-   pnpm install
-   # or
-   bun install
-   ```
+### Optional but Recommended
 
-3. Set up environment variables:
-   - Copy `.env.example` to `.env.local`:
-     ```bash
-     cp .env.example .env.local
-     ```
-   - Fill in the required values (see Environment Variables section below)
+- **VS Code** with extensions:
+  - TypeScript and JavaScript Language Features
+  - Tailwind CSS IntelliSense
+  - Prisma
+  - ESLint
 
-4. Set up the database:
-   - Ensure your PostgreSQL database is running
-   - Run Prisma migrations:
-     ```bash
-     npx prisma migrate dev
-     ```
-   - Generate Prisma client:
-     ```bash
-     npx prisma generate
-     ```
+---
 
-5. Set up Clerk authentication:
-   - Create a Clerk application at [clerk.com](https://clerk.com)
-   - Copy your publishable key and secret key to `.env.local`
+## ⚡ Installation
 
-## Environment Variables
+### Step 1: Clone the Repository
 
-Create a `.env.local` file in the root directory with the following variables:
-
-```env
-# Database
-DATABASE_URL="postgresql://username:password@localhost:5432/database_name"
-
-# Clerk Authentication
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
-CLERK_SECRET_KEY=sk_test_...
-
-# Optional: Customize Clerk routes
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+```bash
+git clone https://github.com/The-Lone-Druid/nextjs-boilerplate.git
+cd nextjs-boilerplate
 ```
 
-## Usage
+### Step 2: Install Dependencies
+
+Choose your preferred package manager:
+
+```bash
+# npm
+npm install
+
+# yarn
+yarn install
+
+# pnpm
+pnpm install
+
+# bun
+bun install
+```
+
+### Step 3: Environment Setup
+
+1. **Copy environment template:**
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+2. **Configure required variables:**
+
+   ```env
+   # Database
+   DATABASE_URL="postgresql://username:password@localhost:5432/database_name"
+
+   # Clerk Authentication
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+   CLERK_SECRET_KEY=sk_test_...
+
+   # Optional: Customize Clerk routes
+   NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+   NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+   NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+   NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+   ```
+
+### Step 4: Database Setup
+
+1. **Ensure PostgreSQL is running** on your system or use a cloud database
+2. **Run database migrations:**
+   ```bash
+   npx prisma migrate dev
+   ```
+3. **Generate Prisma client:**
+   ```bash
+   npx prisma generate
+   ```
+
+### Step 5: Clerk Authentication Setup
+
+1. **Create a Clerk application:**
+   - Visit [clerk.com](https://clerk.com) and create a new application
+   - Choose your authentication providers (Email, Google, GitHub, etc.)
+
+2. **Copy API keys:**
+   - Copy your `Publishable key` and `Secret key` from the Clerk dashboard
+   - Paste them into your `.env.local` file
+
+### Step 6: Verify Installation
+
+```bash
+# Start development server
+npm run dev
+
+# Open your browser to http://localhost:3000
+# You should see the landing page with all features working!
+```
+
+---
+
+## 🔧 Configuration
+
+### Environment Variables
+
+| Variable                              | Description                  | Required |
+| ------------------------------------- | ---------------------------- | -------- |
+| `DATABASE_URL`                        | PostgreSQL connection string | ✅       |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`   | Clerk publishable key        | ✅       |
+| `CLERK_SECRET_KEY`                    | Clerk secret key             | ✅       |
+| `NEXT_PUBLIC_CLERK_SIGN_IN_URL`       | Custom sign-in route         | ❌       |
+| `NEXT_PUBLIC_CLERK_SIGN_UP_URL`       | Custom sign-up route         | ❌       |
+| `NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL` | Post-sign-in redirect        | ❌       |
+| `NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL` | Post-sign-up redirect        | ❌       |
+
+### Database Configuration
+
+The boilerplate uses Prisma with PostgreSQL. You can:
+
+- **Local PostgreSQL:** Install PostgreSQL locally
+- **Cloud Database:** Use services like:
+  - [Prisma](https://console.prisma.io)
+  - [PlanetScale](https://planetscale.com)
+  - [Neon](https://neon.tech)
+  - [Railway](https://railway.app)
+
+### Clerk Configuration
+
+Customize authentication in `src/middleware.ts` and authentication pages in `src/app/auth/`.
+
+---
+
+## 🏃‍♂️ Usage
 
 ### Development
 
-Start the development server:
-
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Starts the development server with Turbopack for fast refresh and hot reloading.
 
-### Building for Production
-
-Build the application:
+### Production Build
 
 ```bash
+# Build the application
 npm run build
-# or
-yarn build
-# or
-pnpm build
-# or
-bun build
+
+# Start production server
+npm start
 ```
 
-Start the production server:
+### Code Quality Commands
 
 ```bash
-npm start
-# or
-yarn start
-# or
-pnpm start
-# or
-bun start
+# Linting
+npm run lint              # Check for linting errors
+npm run lint:fix          # Auto-fix linting issues
+
+# Formatting
+npm run format            # Format code with Prettier
+npm run format:check      # Check if code is formatted
+
+# Type checking
+npm run type-check        # Run TypeScript type checking
 ```
 
-### Code Quality
+### Testing
 
-- **Linting**: `npm run lint`
-- **Fix linting issues**: `npm run lint:fix`
-- **Formatting**: `npm run format`
-- **Check formatting**: `npm run format:check`
-- **Type checking**: `npm run type-check`
+```bash
+# Unit tests
+npm test                  # Run Jest tests
+npm run test:watch        # Run tests in watch mode
+
+# E2E tests
+npm run e2e               # Open Cypress E2E test runner
+npm run e2e:headless      # Run E2E tests headlessly
+
+# Component tests
+npm run component         # Open Cypress component test runner
+npm run component:headless # Run component tests headlessly
+```
 
 ### Database Management
 
-- **View database**: `npx prisma studio`
-- **Create migration**: `npx prisma migrate dev --name <migration_name>`
-- **Reset database**: `npx prisma migrate reset`
-
-### Git Workflow
-
-This boilerplate includes Git hooks and commit conventions:
-
-- **Commit**: Use `npm run commit` for interactive conventional commits
-- **Husky** will run pre-commit hooks for linting and formatting
-
-### Feature Development Scripts
-
-The `scripts/` directory contains utilities for structured feature development:
-
-- **Create new feature**: `./scripts/create-new-feature.sh "feature description"`
-- **Setup plan**: `./scripts/setup-plan.sh`
-- **Update agent context**: `./scripts/update-agent-context.sh`
-
-These scripts help maintain a consistent development workflow with specifications, plans, and tasks.
-
-## Project Structure
-
-```
-nextjs-boilerplate/
-├── .husky/                 # Git hooks
-├── memory/                 # AI/memory related files
-├── prisma/                 # Database schema and migrations
-├── public/                 # Static assets
-├── scripts/                # Development scripts
-├── src/
-│   ├── app/                # Next.js app directory
-│   │   ├── auth/           # Authentication pages
-│   │   ├── globals.css     # Global styles
-│   │   └── page.tsx        # Home page
-│   ├── components/         # React components
-│   │   ├── providers/      # Context providers
-│   │   └── ui/             # shadcn/ui components
-│   ├── hooks/              # Custom React hooks
-│   ├── lib/                # Utility libraries
-│   └── middleware.ts       # Next.js middleware
-├── templates/              # Template files for features
-├── .env.example            # Environment variables template
-├── components.json         # shadcn/ui configuration
-├── eslint.config.mjs       # ESLint configuration
-├── next.config.ts          # Next.js configuration
-├── package.json            # Dependencies and scripts
-├── postcss.config.mjs      # PostCSS configuration
-├── tailwind.config.ts      # Tailwind CSS configuration
-├── tsconfig.json           # TypeScript configuration
-└── README.md               # This file
-```
-
-## Customization
-
-### Adding New Components
-
-Use shadcn/ui to add new components:
-
 ```bash
-npx shadcn@latest add <component-name>
-```
+# View database in browser
+npx prisma studio
 
-### Database Schema
+# Create new migration
+npx prisma migrate dev --name "migration_description"
 
-Edit `prisma/schema.prisma` to modify your database schema, then run:
+# Reset database (⚠️  destructive)
+npx prisma migrate reset
 
-```bash
-npx prisma migrate dev
+# Generate client after schema changes
 npx prisma generate
 ```
 
-### Authentication
+### Git Workflow
 
-Clerk is pre-configured. Customize authentication flows in `src/middleware.ts` and authentication pages in `src/app/auth/`.
+```bash
+# Interactive conventional commits
+npm run commit
+
+# Git hooks run automatically on commit:
+# - Pre-commit: linting and formatting
+# - Commit-msg: commit message validation
+```
+
+### Feature Development Scripts
+
+Located in the `scripts/` directory:
+
+```bash
+# Create new feature with proper structure
+./scripts/create-new-feature.sh "feature description"
+
+# Set up development plan
+./scripts/setup-plan.sh
+
+# Update AI agent context
+./scripts/update-agent-context.sh
+```
+
+---
+
+## 📁 Project Structure
+
+```
+nextjs-boilerplate/
+├── 📁 .husky/                    # Git hooks configuration
+├── 📁 __tests__/                 # Jest test files
+├── 📁 cypress/                   # Cypress E2E and component tests
+│   ├── 📁 component/            # Component tests
+│   ├── 📁 e2e/                  # End-to-end tests
+│   └── 📁 screenshots/          # Test screenshots
+├── 📁 guides/                   # Development guides
+├── 📁 memory/                   # AI/memory related files
+├── 📁 prisma/                   # Database schema and migrations
+│   └── 📄 schema.prisma         # Database schema definition
+├── 📁 public/                   # Static assets
+├── 📁 scripts/                  # Development automation scripts
+├── 📁 src/
+│   ├── 📁 app/                  # Next.js App Router
+│   │   ├── 📁 [lang]/           # Internationalization routes
+│   │   │   ├── 📁 dictionaries/ # Translation files
+│   │   │   └── 📄 dictionaries.ts
+│   │   ├── 📁 auth/             # Authentication pages
+│   │   ├── 📄 globals.css       # Global styles
+│   │   ├── 📄 layout.tsx        # Root layout
+│   │   └── 📄 page.tsx          # Landing page
+│   ├── 📁 components/           # React components
+│   │   ├── 📁 magicui/          # Enhanced UI components
+│   │   ├── 📁 providers/        # Context providers
+│   │   └── 📁 ui/               # shadcn/ui components
+│   ├── 📁 hooks/                # Custom React hooks
+│   ├── 📁 lib/                  # Utility libraries
+│   └── 📄 middleware.ts         # Next.js middleware
+├── 📁 templates/                # Feature development templates
+├── 📄 .env.example              # Environment variables template
+├── 📄 components.json           # shadcn/ui configuration
+├── 📄 cypress.config.ts         # Cypress configuration
+├── 📄 eslint.config.mjs         # ESLint configuration
+├── 📄 jest.config.ts            # Jest configuration
+├── 📄 next.config.ts            # Next.js configuration
+├── 📄 package.json              # Dependencies and scripts
+├── 📄 postcss.config.mjs        # PostCSS configuration
+├── 📄 tailwind.config.ts        # Tailwind CSS configuration
+├── 📄 tsconfig.json             # TypeScript configuration
+└── 📄 README.md                 # This file
+```
+
+---
+
+## 🎨 Customization
+
+### Adding New Components
+
+Add shadcn/ui components to your project:
+
+```bash
+# Add a specific component
+npx shadcn@latest add button
+
+# Add multiple components
+npx shadcn@latest add card dialog
+
+# Add all available components
+npx shadcn@latest add --all
+```
+
+### Database Schema Changes
+
+1. **Edit the schema:**
+
+   ```bash
+   # Edit prisma/schema.prisma
+   ```
+
+2. **Create and apply migration:**
+
+   ```bash
+   npx prisma migrate dev --name "add_new_table"
+   ```
+
+3. **Generate updated client:**
+   ```bash
+   npx prisma generate
+   ```
+
+### Authentication Customization
+
+Modify authentication flows in:
+
+- `src/middleware.ts` - Route protection and redirects
+- `src/app/auth/` - Authentication pages
+- Clerk dashboard - Authentication settings
 
 ### Theming
 
-The app uses `next-themes` for theme switching. Customize themes in `src/components/providers/theme-provider.tsx`.
+Customize the theme system:
 
-## Deployment
+- **Colors:** Edit `src/app/globals.css`
+- **Theme provider:** Modify `src/components/providers/theme-provider.tsx`
+- **Component variants:** Update `src/components/ui/` components
 
-### Vercel
+### Internationalization
 
-1. Connect your repository to Vercel
-2. Add environment variables in Vercel dashboard
-3. Deploy
+Add new languages:
+
+1. **Create dictionary file:** `src/app/[lang]/dictionaries/[locale].json`
+2. **Update dictionaries.ts:** Add new locale to the export
+3. **Update language selector:** Modify the language dropdown in components
+
+---
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+<p align="center">
+  <a href="https://vercel.com/new/clone?repository-url=https://github.com/The-Lone-Druid/nextjs-boilerplate">
+    <img src="https://vercel.com/button" alt="Deploy with Vercel" />
+  </a>
+</p>
+
+1. **Connect repository** to Vercel
+2. **Add environment variables** in Vercel dashboard
+3. **Deploy automatically** on every push
+
+### Manual Deployment
+
+#### Docker
+
+```dockerfile
+# Dockerfile
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+RUN npm run build
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+
+#### Build and run
+
+```bash
+# Build Docker image
+docker build -t nextjs-boilerplate .
+
+# Run container
+docker run -p 3000:3000 nextjs-boilerplate
+```
 
 ### Other Platforms
 
+#### Netlify
+
+1. Connect repository to Netlify
+2. Set build command: `npm run build`
+3. Set publish directory: `.next`
+4. Add environment variables
+
+#### Railway
+
+1. Connect GitHub repository
+2. Railway auto-detects Next.js
+3. Add environment variables
+4. Deploy
+
+#### AWS/GCP/Azure
+
 Ensure your deployment platform supports:
+
 - Node.js 18+
 - Environment variables
 - PostgreSQL database
+- Static file serving
 
-## Contributing
+---
 
-1. Follow the feature development workflow using the provided scripts
-2. Use conventional commits
-3. Ensure all tests pass and code is linted
+## 🤝 Contributing
 
-## License
+We welcome contributions! Please follow these steps:
 
-This project is licensed under the MIT License.
+### Development Workflow
 
-## Learn More
+1. **Fork the repository**
+2. **Create a feature branch:**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+3. **Use the development scripts:**
+   ```bash
+   ./scripts/create-new-feature.sh "Amazing new feature"
+   ```
+4. **Make your changes**
+5. **Run tests and linting:**
+   ```bash
+   npm run lint
+   npm run type-check
+   npm test
+   ```
+6. **Commit using conventional commits:**
+   ```bash
+   npm run commit
+   ```
+7. **Push and create a Pull Request**
 
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Prisma Documentation](https://www.prisma.io/docs)
-- [Clerk Documentation](https://clerk.com/docs)
-- [shadcn/ui Documentation](https://ui.shadcn.com)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+### Guidelines
+
+- Follow the existing code style
+- Add tests for new features
+- Update documentation as needed
+- Use TypeScript for all new code
+- Ensure accessibility compliance
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 📚 Learn More
+
+### Official Documentation
+
+- [**Next.js Documentation**](https://nextjs.org/docs) - Learn about Next.js features and API
+- [**TypeScript Handbook**](https://www.typescriptlang.org/docs/) - TypeScript language reference
+- [**Prisma Documentation**](https://www.prisma.io/docs) - Database ORM documentation
+- [**Clerk Documentation**](https://clerk.com/docs) - Authentication documentation
+- [**shadcn/ui Documentation**](https://ui.shadcn.com) - Component library documentation
+- [**Tailwind CSS Documentation**](https://tailwindcss.com/docs) - CSS framework documentation
+
+### Community Resources
+
+- [**Next.js Discord**](https://nextjs.org/discord) - Community support
+- [**Prisma Slack**](https://slack.prisma.io/) - Database discussions
+- [**Clerk Community**](https://clerk.com/community) - Authentication help
+
+### Related Projects
+
+- [**create-next-app**](https://nextjs.org/docs/api-reference/create-next-app) - Official Next.js starter
+- [**next-auth**](https://next-auth.js.org/) - Alternative authentication
+- [**t3-stack**](https://create.t3.gg/) - Full-stack TypeScript starter
+
+---
+
+<div align="center">
+
+**Built with ❤️ using modern web technologies**
+
+[⬆️ Back to Top](#-nextjs-boilerplate)
+
+</div>

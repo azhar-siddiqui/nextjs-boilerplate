@@ -1,6 +1,9 @@
 'use client';
 
+import { getDictionary } from '@/app/[lang]/dictionaries';
 import { AnimatedThemeToggler } from '@/components/magicui/animated-theme-toggler';
+import { IconCloud } from '@/components/magicui/icon-cloud';
+import { ScriptCopyBtn } from '@/components/magicui/script-copy-btn';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -25,9 +28,11 @@ import {
   SiCypress,
   SiEslint,
   SiJest,
+  SiLocal,
   SiNextdotjs,
   SiPostgresql,
   SiPrisma,
+  SiShadcnui,
   SiTypescript,
 } from '@icons-pack/react-simple-icons';
 import {
@@ -35,9 +40,7 @@ import {
   Code,
   Database,
   GitBranch,
-  Globe,
   Moon,
-  Palette,
   Settings,
   Star,
   Sun,
@@ -48,8 +51,16 @@ import { useState } from 'react';
 
 type Locale = 'en' | 'es' | 'fr';
 
+type SetupStep = {
+  title: string;
+  description: string;
+  commandMap: Record<string, string>;
+  icon: React.ReactNode;
+};
+
 export default function Home() {
   const [locale, setLocale] = useState<Locale>('en');
+  const dictionary = getDictionary(locale);
 
   const changeLanguage = (newLocale: Locale) => {
     setLocale(newLocale);
@@ -58,68 +69,91 @@ export default function Home() {
   const features = [
     {
       icon: <SiNextdotjs className="h-6 w-6" />,
-      title: 'Next.js 15',
-      description:
-        'Latest App Router with Turbopack for lightning-fast development',
-      color: 'text-black dark:text-white',
+      title: dictionary.features.nextjs.title,
+      description: dictionary.features.nextjs.description,
+      color: 'text-foreground',
     },
     {
-      icon: <SiTypescript className="h-6 w-6" />,
-      title: 'TypeScript',
-      description:
-        'Full type safety with strict type checking and IntelliSense',
-      color: 'text-blue-600',
+      icon: <SiTypescript color={'default'} className="h-6 w-6" />,
+      title: dictionary.features.typescript.title,
+      description: dictionary.features.typescript.description,
+      color: 'text-foreground',
     },
     {
-      icon: <Database className="h-6 w-6" />,
-      title: 'Prisma + PostgreSQL',
-      description: 'Type-safe database ORM with Accelerate for edge computing',
-      color: 'text-gray-600',
+      icon: <SiPostgresql color={'default'} className="h-6 w-6" />,
+      title: dictionary.features.prisma.title,
+      description: dictionary.features.prisma.description,
+      color: 'text-foreground',
     },
     {
-      icon: <SiClerk className="h-6 w-6" />,
-      title: 'Clerk Auth',
-      description: 'Complete authentication solution with social logins',
-      color: 'text-black',
+      icon: <SiClerk color={'default'} className="h-6 w-6" />,
+      title: dictionary.features.clerk.title,
+      description: dictionary.features.clerk.description,
+      color: 'text-foreground',
     },
     {
-      icon: <Palette className="h-6 w-6" />,
-      title: 'shadcn/ui',
-      description: 'Beautiful, accessible components built on Radix UI',
-      color: 'text-gray-700',
+      icon: <SiShadcnui className="h-6 w-6" />,
+      title: dictionary.features.shadcn.title,
+      description: dictionary.features.shadcn.description,
+      color: 'text-foreground',
     },
     {
-      icon: <Globe className="h-6 w-6" />,
-      title: 'Internationalization',
-      description: 'Multi-language support with client-side switching',
-      color: 'text-green-600',
+      icon: <SiLocal className="h-6 w-6" />,
+      title: dictionary.features.i18n.title,
+      description: dictionary.features.i18n.description,
+      color: 'text-foreground',
+    },
+    {
+      icon: <SiCypress color={'default'} className="h-6 w-6" />,
+      title: dictionary.features.cypress.title,
+      description: dictionary.features.cypress.description,
+      color: 'text-foreground',
+    },
+    {
+      icon: <SiJest color={'default'} className="h-6 w-6" />,
+      title: dictionary.features.jest.title,
+      description: dictionary.features.jest.description,
+      color: 'text-foreground',
     },
   ];
 
-  const setupSteps = [
+  const setupSteps: SetupStep[] = [
     {
-      title: 'Clone & Install',
-      description: 'Get the boilerplate and install dependencies',
-      command:
-        'git clone https://github.com/The-Lone-Druid/nextjs-boilerplate.git && cd nextjs-boilerplate && npm install',
+      title: dictionary.setup.steps.clone.title,
+      description: dictionary.setup.steps.clone.description,
+      commandMap: {
+        npm: 'git clone https://github.com/The-Lone-Druid/nextjs-boilerplate.git && cd nextjs-boilerplate && npm install',
+        yarn: 'git clone https://github.com/The-Lone-Druid/nextjs-boilerplate.git && cd nextjs-boilerplate && yarn install',
+        pnpm: 'git clone https://github.com/The-Lone-Druid/nextjs-boilerplate.git && cd nextjs-boilerplate && pnpm install',
+      },
       icon: <GitBranch className="h-5 w-5" />,
     },
     {
-      title: 'Configure Environment',
-      description: 'Set up your environment variables',
-      command: 'cp .env.example .env.local',
+      title: dictionary.setup.steps.env.title,
+      description: dictionary.setup.steps.env.description,
+      commandMap: {
+        bash: 'cp .env.example .env.local',
+      },
       icon: <Settings className="h-5 w-5" />,
     },
     {
-      title: 'Setup Database',
-      description: 'Configure Prisma and PostgreSQL',
-      command: 'npx prisma migrate dev && npx prisma generate',
+      title: dictionary.setup.steps.database.title,
+      description: dictionary.setup.steps.database.description,
+      commandMap: {
+        npm: 'npx prisma migrate dev && npx prisma generate',
+        yarn: 'yarn prisma migrate dev && yarn prisma generate',
+        pnpm: 'pnpm prisma migrate dev && pnpm prisma generate',
+      },
       icon: <Database className="h-5 w-5" />,
     },
     {
-      title: 'Start Development',
-      description: 'Launch your development server',
-      command: 'npm run dev',
+      title: dictionary.setup.steps.dev.title,
+      description: dictionary.setup.steps.dev.description,
+      commandMap: {
+        npm: 'npm run dev',
+        yarn: 'yarn dev',
+        pnpm: 'pnpm dev',
+      },
       icon: <Zap className="h-5 w-5" />,
     },
   ];
@@ -148,9 +182,13 @@ export default function Home() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="en">🇺🇸 English</SelectItem>
-                <SelectItem value="es">🇪🇸 Español</SelectItem>
-                <SelectItem value="fr">🇫🇷 Français</SelectItem>
+                <SelectItem value="en">
+                  {dictionary.language.english}
+                </SelectItem>
+                <SelectItem value="es">
+                  {dictionary.language.spanish}
+                </SelectItem>
+                <SelectItem value="fr">{dictionary.language.french}</SelectItem>
               </SelectContent>
             </Select>
             <AnimatedThemeToggler />
@@ -162,25 +200,25 @@ export default function Home() {
       <section className="container mx-auto px-4 py-20 text-center">
         <div className="mx-auto max-w-4xl">
           <Badge variant="secondary" className="mb-6 px-4 py-2 text-sm">
-            🚀 Production-Ready Boilerplate
+            {dictionary.hero.badge}
           </Badge>
           <h1 className="text-foreground mb-6 text-5xl leading-tight font-bold md:text-7xl">
-            Build Faster with
-            <span className="text-primary mt-2 block">Next.js 15</span>
+            {dictionary.hero.title}
+            <span className="text-primary mt-2 block">
+              {dictionary.hero.titleHighlight}
+            </span>
           </h1>
           <p className="text-muted-foreground mx-auto mb-10 max-w-2xl text-xl leading-relaxed">
-            A comprehensive full-stack boilerplate with TypeScript, Prisma,
-            Clerk authentication, shadcn/ui components, and modern development
-            tools. Start building production-ready applications in minutes.
+            {dictionary.hero.description}
           </p>
           <div className="mb-12 flex flex-col justify-center gap-4 sm:flex-row">
             <Button size="lg" className="h-12 px-8 text-lg">
               <Zap className="mr-2 h-5 w-5" />
-              Get Started
+              {dictionary.hero.getStarted}
             </Button>
             <Button variant="outline" size="lg" className="h-12 px-8 text-lg">
               <Code className="mr-2 h-5 w-5" />
-              View Documentation
+              {dictionary.hero.viewDocs}
             </Button>
           </div>
 
@@ -188,19 +226,27 @@ export default function Home() {
           <div className="mx-auto grid max-w-2xl grid-cols-2 gap-6 md:grid-cols-4">
             <div className="text-center">
               <div className="text-primary text-2xl font-bold">15+</div>
-              <div className="text-muted-foreground text-sm">UI Components</div>
+              <div className="text-muted-foreground text-sm">
+                {dictionary.hero.stats.components}
+              </div>
             </div>
             <div className="text-center">
               <div className="text-primary text-2xl font-bold">3</div>
-              <div className="text-muted-foreground text-sm">Languages</div>
+              <div className="text-muted-foreground text-sm">
+                {dictionary.hero.stats.languages}
+              </div>
             </div>
             <div className="text-center">
               <div className="text-primary text-2xl font-bold">100%</div>
-              <div className="text-muted-foreground text-sm">TypeScript</div>
+              <div className="text-muted-foreground text-sm">
+                {dictionary.hero.stats.typescript}
+              </div>
             </div>
             <div className="text-center">
               <div className="text-primary text-2xl font-bold">Jest</div>
-              <div className="text-muted-foreground text-sm">& Cypress</div>
+              <div className="text-muted-foreground text-sm">
+                & {dictionary.hero.stats.testing.split(' ')[1]}
+              </div>
             </div>
           </div>
         </div>
@@ -210,10 +256,10 @@ export default function Home() {
       <section className="container mx-auto px-4 py-20">
         <div className="mb-16 text-center">
           <h2 className="text-foreground mb-4 text-4xl font-bold">
-            Everything You Need
+            {dictionary.features.title}
           </h2>
           <p className="text-muted-foreground mx-auto max-w-2xl text-xl">
-            Pre-configured with industry-standard tools and best practices
+            {dictionary.features.subtitle}
           </p>
         </div>
 
@@ -244,57 +290,35 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="mb-16 text-center">
             <h2 className="text-foreground mb-4 text-4xl font-bold">
-              Modern Tech Stack
+              {dictionary.techStack.title}
             </h2>
             <p className="text-muted-foreground text-xl">
-              Built with the latest technologies and best practices
+              {dictionary.techStack.subtitle}
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-6">
-            {[
-              {
-                icon: <SiNextdotjs className="h-8 w-8" />,
-                name: 'Next.js 15',
-                color: 'text-black dark:text-white',
-              },
-              {
-                icon: <SiTypescript className="h-8 w-8" />,
-                name: 'TypeScript',
-                color: 'text-blue-600',
-              },
-              {
-                icon: <SiPrisma className="h-8 w-8" />,
-                name: 'Prisma',
-                color: 'text-gray-600',
-              },
-              {
-                icon: <SiPostgresql className="h-8 w-8" />,
-                name: 'PostgreSQL',
-                color: 'text-blue-700',
-              },
-              {
-                icon: <SiClerk className="h-8 w-8" />,
-                name: 'Clerk',
-                color: 'text-black',
-              },
-              {
-                icon: <Palette className="h-8 w-8" />,
-                name: 'Tailwind',
-                color: 'text-cyan-500',
-              },
-            ].map((tech, index) => (
-              <div key={index} className="group text-center">
-                <div
-                  className={`mx-auto mb-3 ${tech.color} transition-transform duration-300 group-hover:scale-110`}
-                >
-                  {tech.icon}
-                </div>
-                <div className="text-muted-foreground text-sm font-medium">
-                  {tech.name}
-                </div>
-              </div>
-            ))}
+          <div className="relative flex size-full items-center justify-center overflow-hidden">
+            <IconCloud
+              icons={[
+                <SiNextdotjs size={'98px'} key="nextjs" />,
+                <SiTypescript
+                  size={'98px'}
+                  color={'default'}
+                  key="typescript"
+                />,
+                <SiPrisma size={'98px'} color={'default'} key="prisma" />,
+                <SiPostgresql
+                  size={'98px'}
+                  color={'default'}
+                  key="postgresql"
+                />,
+                <SiClerk size={'98px'} color={'default'} key="clerk" />,
+                <SiCypress size={'98px'} color={'default'} key="cypress" />,
+                <SiJest size={'98px'} color={'default'} key="jest" />,
+                <SiEslint size={'98px'} color={'default'} key="eslint" />,
+                <SiShadcnui size={'98px'} key="shadcnui" />,
+              ]}
+            />
           </div>
         </div>
       </section>
@@ -303,10 +327,10 @@ export default function Home() {
       <section className="container mx-auto px-4 py-20">
         <div className="mb-16 text-center">
           <h2 className="text-foreground mb-4 text-4xl font-bold">
-            Get Started in Minutes
+            {dictionary.setup.title}
           </h2>
           <p className="text-muted-foreground mx-auto max-w-2xl text-xl">
-            Follow these simple steps to launch your project
+            {dictionary.setup.subtitle}
           </p>
         </div>
 
@@ -327,9 +351,15 @@ export default function Home() {
                   <p className="text-muted-foreground mb-4 text-lg">
                     {step.description}
                   </p>
-                  <div className="bg-muted rounded-lg p-4 font-mono text-sm">
-                    <code>{step.command}</code>
-                  </div>
+                  <ScriptCopyBtn
+                    codeLanguage="bash"
+                    lightTheme="github-dark"
+                    darkTheme="github-dark"
+                    commandMap={step.commandMap}
+                    showMultiplePackageOptions={
+                      Object.keys(step.commandMap).length > 1
+                    }
+                  />
                 </div>
               </div>
             ))}
@@ -342,18 +372,24 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="mb-16 text-center">
             <h2 className="text-foreground mb-4 text-4xl font-bold">
-              Component Showcase
+              {dictionary.components.title}
             </h2>
             <p className="text-muted-foreground text-xl">
-              Beautiful, accessible components ready to use
+              {dictionary.components.subtitle}
             </p>
           </div>
 
           <Tabs defaultValue="components" className="mx-auto w-full max-w-4xl">
             <TabsList className="mb-8 grid w-full grid-cols-3">
-              <TabsTrigger value="components">UI Components</TabsTrigger>
-              <TabsTrigger value="theme">Theme System</TabsTrigger>
-              <TabsTrigger value="testing">Testing</TabsTrigger>
+              <TabsTrigger value="components">
+                {dictionary.components.tabs.ui}
+              </TabsTrigger>
+              <TabsTrigger value="theme">
+                {dictionary.components.tabs.theme}
+              </TabsTrigger>
+              <TabsTrigger value="testing">
+                {dictionary.components.tabs.testing}
+              </TabsTrigger>
             </TabsList>
 
             <TabsContent value="components" className="space-y-6">
@@ -397,23 +433,23 @@ export default function Home() {
             <TabsContent value="theme" className="space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>Theme Support</CardTitle>
+                  <CardTitle>{dictionary.components.theme.title}</CardTitle>
                   <CardDescription>
-                    Automatic dark/light mode with system preference detection
+                    {dictionary.components.theme.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex items-center space-x-4">
                   <div className="flex items-center space-x-2">
                     <Sun className="h-4 w-4" />
-                    <span>Light</span>
+                    <span>{dictionary.components.theme.light}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Moon className="h-4 w-4" />
-                    <span>Dark</span>
+                    <span>{dictionary.components.theme.dark}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Settings className="h-4 w-4" />
-                    <span>System</span>
+                    <span>{dictionary.components.theme.system}</span>
                   </div>
                 </CardContent>
               </Card>
@@ -425,10 +461,10 @@ export default function Home() {
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-2">
                       <SiJest className="h-5 w-5" />
-                      <span>Jest</span>
+                      <span>{dictionary.components.testing.jest.title}</span>
                     </CardTitle>
                     <CardDescription>
-                      Unit testing with React Testing Library
+                      {dictionary.components.testing.jest.description}
                     </CardDescription>
                   </CardHeader>
                 </Card>
@@ -437,9 +473,11 @@ export default function Home() {
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-2">
                       <SiCypress className="h-5 w-5" />
-                      <span>Cypress</span>
+                      <span>{dictionary.components.testing.cypress.title}</span>
                     </CardTitle>
-                    <CardDescription>E2E and component testing</CardDescription>
+                    <CardDescription>
+                      {dictionary.components.testing.cypress.description}
+                    </CardDescription>
                   </CardHeader>
                 </Card>
               </div>
@@ -452,10 +490,10 @@ export default function Home() {
       <section className="container mx-auto px-4 py-20">
         <div className="mb-16 text-center">
           <h2 className="text-foreground mb-4 text-4xl font-bold">
-            Development Workflow
+            {dictionary.workflow.title}
           </h2>
           <p className="text-muted-foreground text-xl">
-            Streamlined development with automated tools
+            {dictionary.workflow.subtitle}
           </p>
         </div>
 
@@ -463,23 +501,23 @@ export default function Home() {
           {[
             {
               icon: <SiEslint className="h-8 w-8" />,
-              title: 'Code Quality',
-              description: 'ESLint + Prettier for consistent code formatting',
+              title: dictionary.workflow.codeQuality.title,
+              description: dictionary.workflow.codeQuality.description,
             },
             {
               icon: <GitBranch className="h-8 w-8" />,
-              title: 'Git Hooks',
-              description: 'Husky + Commitlint for conventional commits',
+              title: dictionary.workflow.git.title,
+              description: dictionary.workflow.git.description,
             },
             {
               icon: <TestTube className="h-8 w-8" />,
-              title: 'Testing',
-              description: 'Jest for unit tests, Cypress for E2E',
+              title: dictionary.workflow.testing.title,
+              description: dictionary.workflow.testing.description,
             },
             {
               icon: <Clock className="h-8 w-8" />,
-              title: 'Fast Development',
-              description: 'Turbopack for lightning-fast builds',
+              title: dictionary.workflow.performance.title,
+              description: dictionary.workflow.performance.description,
             },
           ].map((item, index) => (
             <Card key={index} className="text-center">
@@ -496,17 +534,14 @@ export default function Home() {
       {/* CTA Section */}
       <section className="bg-primary text-primary-foreground py-20">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="mb-6 text-4xl font-bold">
-            Ready to Build Something Amazing?
-          </h2>
+          <h2 className="mb-6 text-4xl font-bold">{dictionary.cta.title}</h2>
           <p className="mx-auto mb-8 max-w-2xl text-xl opacity-90">
-            Start your next project with this production-ready boilerplate and
-            focus on what matters most - your application logic.
+            {dictionary.cta.description}
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Button size="lg" variant="secondary" className="h-12 px-8 text-lg">
               <GitBranch className="mr-2 h-5 w-5" />
-              Clone Repository
+              {dictionary.cta.clone}
             </Button>
             <Button
               size="lg"
@@ -514,7 +549,7 @@ export default function Home() {
               className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary h-12 px-8 text-lg"
             >
               <Code className="mr-2 h-5 w-5" />
-              View Source
+              {dictionary.cta.source}
             </Button>
           </div>
         </div>
@@ -532,34 +567,33 @@ export default function Home() {
                 </h3>
               </div>
               <p className="text-muted-foreground text-sm">
-                A modern full-stack boilerplate for building production-ready
-                applications.
+                {dictionary.footer.description}
               </p>
             </div>
 
             <div>
               <h4 className="text-card-foreground mb-4 font-semibold">
-                Quick Links
+                {dictionary.footer.links.title}
               </h4>
               <ul className="text-muted-foreground space-y-2 text-sm">
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
-                    Documentation
+                    {dictionary.footer.links.docs}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
-                    GitHub
+                    {dictionary.footer.links.github}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
-                    Issues
+                    {dictionary.footer.links.issues}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
-                    Contributing
+                    {dictionary.footer.links.contributing}
                   </a>
                 </li>
               </ul>
@@ -567,27 +601,27 @@ export default function Home() {
 
             <div>
               <h4 className="text-card-foreground mb-4 font-semibold">
-                Resources
+                {dictionary.footer.resources.title}
               </h4>
               <ul className="text-muted-foreground space-y-2 text-sm">
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
-                    Next.js Docs
+                    {dictionary.footer.resources.nextjs}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
-                    Prisma Docs
+                    {dictionary.footer.resources.prisma}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
-                    Clerk Docs
+                    {dictionary.footer.resources.clerk}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
-                    shadcn/ui
+                    {dictionary.footer.resources.shadcn}
                   </a>
                 </li>
               </ul>
@@ -595,27 +629,27 @@ export default function Home() {
 
             <div>
               <h4 className="text-card-foreground mb-4 font-semibold">
-                Community
+                {dictionary.footer.community.title}
               </h4>
               <ul className="text-muted-foreground space-y-2 text-sm">
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
-                    Discord
+                    {dictionary.footer.community.discord}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
-                    Twitter
+                    {dictionary.footer.community.twitter}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
-                    Blog
+                    {dictionary.footer.community.blog}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
-                    Newsletter
+                    {dictionary.footer.community.newsletter}
                   </a>
                 </li>
               </ul>
@@ -625,14 +659,11 @@ export default function Home() {
           <Separator className="mb-8" />
 
           <div className="text-muted-foreground flex flex-col items-center justify-between text-sm sm:flex-row">
-            <p>
-              © 2025 Next.js Boilerplate. Built with ❤️ using modern web
-              technologies.
-            </p>
+            <p>{dictionary.footer.copyright}</p>
             <div className="mt-4 flex items-center space-x-4 sm:mt-0">
-              <span>v0.1.0</span>
+              <span>{dictionary.footer.version}</span>
               <span>•</span>
-              <span>MIT License</span>
+              <span>{dictionary.footer.license}</span>
             </div>
           </div>
         </div>

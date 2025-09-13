@@ -1,4 +1,3 @@
-import 'server-only';
 import en from './dictionaries/en.json';
 import es from './dictionaries/es.json';
 import fr from './dictionaries/fr.json';
