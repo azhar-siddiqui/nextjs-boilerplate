@@ -1,6 +1,3 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 # Only run commitizen if no commit message is provided (i.e., when using git commit without -m)
 if [ -z "$2" ]; then
   exec < /dev/tty && node_modules/.bin/cz --hook || true
