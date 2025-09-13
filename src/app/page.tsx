@@ -539,17 +539,35 @@ export default function Home() {
             {dictionary.cta.description}
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <Button size="lg" variant="secondary" className="h-12 px-8 text-lg">
-              <GitBranch className="mr-2 h-5 w-5" />
-              {dictionary.cta.clone}
+            <Button
+              size="lg"
+              variant="secondary"
+              className="h-12 px-8 text-lg"
+              asChild
+            >
+              <a
+                href="https://github.com/The-Lone-Druid/nextjs-boilerplate"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GitBranch className="mr-2 h-5 w-5" />
+                {dictionary.cta.clone}
+              </a>
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary h-12 px-8 text-lg"
+              asChild
             >
-              <Code className="mr-2 h-5 w-5" />
-              {dictionary.cta.source}
+              <a
+                href="https://github.com/The-Lone-Druid/nextjs-boilerplate"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Code className="mr-2 h-5 w-5" />
+                {dictionary.cta.source}
+              </a>
             </Button>
           </div>
         </div>
@@ -577,22 +595,42 @@ export default function Home() {
               </h4>
               <ul className="text-muted-foreground space-y-2 text-sm">
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a
+                    href="https://github.com/The-Lone-Druid/nextjs-boilerplate#readme"
+                    className="hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {dictionary.footer.links.docs}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a
+                    href="https://github.com/The-Lone-Druid/nextjs-boilerplate"
+                    className="hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {dictionary.footer.links.github}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a
+                    href="https://github.com/The-Lone-Druid/nextjs-boilerplate/issues"
+                    className="hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {dictionary.footer.links.issues}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a
+                    href="https://github.com/The-Lone-Druid/nextjs-boilerplate/blob/main/CONTRIBUTING.md"
+                    className="hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {dictionary.footer.links.contributing}
                   </a>
                 </li>
@@ -605,22 +643,42 @@ export default function Home() {
               </h4>
               <ul className="text-muted-foreground space-y-2 text-sm">
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a
+                    href="https://nextjs.org/docs"
+                    className="hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {dictionary.footer.resources.nextjs}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a
+                    href="https://www.prisma.io/docs"
+                    className="hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {dictionary.footer.resources.prisma}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a
+                    href="https://clerk.com/docs"
+                    className="hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {dictionary.footer.resources.clerk}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a
+                    href="https://ui.shadcn.com"
+                    className="hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {dictionary.footer.resources.shadcn}
                   </a>
                 </li>
@@ -633,22 +691,42 @@ export default function Home() {
               </h4>
               <ul className="text-muted-foreground space-y-2 text-sm">
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a
+                    href="https://github.com/The-Lone-Druid/nextjs-boilerplate/discussions"
+                    className="hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {dictionary.footer.community.discord}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a
+                    href="https://github.com/The-Lone-Druid"
+                    className="hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {dictionary.footer.community.twitter}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a
+                    href="https://github.com/The-Lone-Druid/nextjs-boilerplate#readme"
+                    className="hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {dictionary.footer.community.blog}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a
+                    href="https://github.com/The-Lone-Druid/nextjs-boilerplate/releases"
+                    className="hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {dictionary.footer.community.newsletter}
                   </a>
                 </li>

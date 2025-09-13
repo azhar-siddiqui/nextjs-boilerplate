@@ -8,10 +8,16 @@
   <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
   <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License: MIT" />
   <br />
+  <img src="https://img.shields.io/github/contributors/The-Lone-Druid/nextjs-boilerplate?style=for-the-badge" alt="Contributors" />
+  <img src="https://img.shields.io/github/stars/The-Lone-Druid/nextjs-boilerplate?style=for-the-badge" alt="Stars" />
+  <img src="https://img.shields.io/github/issues/The-Lone-Druid/nextjs-boilerplate?style=for-the-badge" alt="Issues" />
+  <img src="https://img.shields.io/github/last-commit/The-Lone-Druid/nextjs-boilerplate?style=for-the-badge" alt="Last Commit" />
+  <br />
   <strong>A production-ready, full-stack Next.js boilerplate with modern tools and best practices</strong>
   <br />
   <a href="#-quick-start">🚀 Quick Start</a> •
-  <a href="#-documentation">📖 Documentation</a> •
+  <a href="#-contributing">🤝 Contributing</a> •
+  <a href="https://github.com/The-Lone-Druid/nextjs-boilerplate">📖 Documentation</a> •
   <a href="https://nextjs-boilerplate-demo.vercel.app">✨ Live Demo</a>
 </p>
 
@@ -523,31 +529,33 @@ Ensure your deployment platform supports:
 
 ## 🤝 Contributing
 
-We welcome contributions! Please follow these steps:
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for detailed information on:
 
-### Development Workflow
+- Development setup and workflow
+- Coding standards and best practices
+- Testing guidelines
+- How to submit pull requests
 
-1. **Fork the repository**
-2. **Create a feature branch:**
-   ```bash
-   git checkout -b feature/amazing-feature
-   ```
-3. **Use the development scripts:**
-   ```bash
-   ./scripts/create-new-feature.sh "Amazing new feature"
-   ```
-4. **Make your changes**
-5. **Run tests and linting:**
-   ```bash
-   npm run lint
-   npm run type-check
-   npm test
-   ```
-6. **Commit using conventional commits:**
-   ```bash
-   npm run commit
-   ```
-7. **Push and create a Pull Request**
+### Quick Start for Contributors
+
+1. Fork the repository
+2. Clone your fork: `git clone https://github.com/your-username/nextjs-boilerplate.git`
+3. Install dependencies: `npm install`
+4. Set up environment: `cp .env.example .env.local`
+5. Start developing: `npm run dev`
+
+### Development Scripts
+
+```bash
+# Create new feature
+./scripts/create-new-feature.sh "feature description"
+
+# Interactive commits
+npm run commit
+
+# Run tests
+npm test && npm run e2e:headless
+```
 
 ### Guidelines
 
@@ -557,11 +565,13 @@ We welcome contributions! Please follow these steps:
 - Use TypeScript for all new code
 - Ensure accessibility compliance
 
----
-
 ## 📄 License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+## 🛡️ Code of Conduct
+
+This project follows a [Code of Conduct](CODE_OF_CONDUCT.md) to ensure a welcoming environment for all contributors.
 
 ---
 
