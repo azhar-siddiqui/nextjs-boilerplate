@@ -94,16 +94,19 @@ cd nextjs-boilerplate
 # 2. Install dependencies
 npm install
 
-# 3. Set up environment variables
+# 3. Set up git hooks
+npm run prepare
+
+# 4. Set up environment variables
 cp .env.example .env.local
 
-# 4. Configure your database and Clerk keys in .env.local
+# 5. Configure your database and Clerk keys in .env.local
 
-# 5. Set up the database
+# 6. Set up the database
 npx prisma migrate dev
 npx prisma generate
 
-# 6. Start the development server
+# 7. Start the development server
 npm run dev
 ```
 
@@ -165,7 +168,15 @@ pnpm install
 bun install
 ```
 
-### Step 3: Environment Setup
+### Step 3: Set Up Git Hooks
+
+Initialize Husky git hooks for pre-commit linting and commit message validation:
+
+```bash
+npm run prepare
+```
+
+### Step 4: Environment Setup
 
 1. **Copy environment template:**
 
@@ -190,7 +201,7 @@ bun install
    NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
    ```
 
-### Step 4: Database Setup
+### Step 5: Database Setup
 
 1. **Ensure PostgreSQL is running** on your system or use a cloud database
 2. **Run database migrations:**
@@ -202,7 +213,7 @@ bun install
    npx prisma generate
    ```
 
-### Step 5: Clerk Authentication Setup
+### Step 6: Clerk Authentication Setup
 
 1. **Create a Clerk application:**
    - Visit [clerk.com](https://clerk.com) and create a new application
@@ -212,7 +223,7 @@ bun install
    - Copy your `Publishable key` and `Secret key` from the Clerk dashboard
    - Paste them into your `.env.local` file
 
-### Step 6: Verify Installation
+### Step 7: Verify Installation
 
 ```bash
 # Start development server
