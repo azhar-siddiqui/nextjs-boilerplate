@@ -5,6 +5,7 @@ import { Moon, SunDim } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
+import { Button } from '../ui/button';
 
 type props = {
   className?: string;
@@ -72,20 +73,19 @@ export const AnimatedThemeToggler = ({ className }: props) => {
   }
 
   return (
-    <button
+    <Button
       ref={buttonRef}
       onClick={changeTheme}
-      className={cn(
-        'focus-visible:ring-ring ring-offset-background hover:bg-accent hover:text-accent-foreground inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
-        className
-      )}
+      className={cn(className)}
       aria-label="Toggle theme"
+      variant="outline"
+      size="icon"
     >
       {resolvedTheme === 'dark' ? (
         <SunDim className="h-4 w-4" />
       ) : (
         <Moon className="h-4 w-4" />
       )}
-    </button>
+    </Button>
   );
 };

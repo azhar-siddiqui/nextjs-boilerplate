@@ -166,7 +166,7 @@ export default function Home() {
           <div className="flex items-center space-x-3">
             <div className="flex items-center space-x-2">
               <SiNextdotjs className="text-primary h-7 w-7" />
-              <h1 className="text-card-foreground text-xl font-bold">
+              <h1 className="text-card-foreground hidden text-xl font-bold sm:block">
                 Next.js Boilerplate
               </h1>
             </div>
@@ -175,7 +175,7 @@ export default function Home() {
               v0.1.0
             </Badge>
           </div>
-          <div className="space-4 flex items-center">
+          <div className="flex items-center space-x-4">
             {/* Language Dropdown */}
             <Select value={locale} onValueChange={changeLanguage}>
               <SelectTrigger className="w-[120px]">
@@ -334,7 +334,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-4xl overflow-x-auto md:overflow-x-hidden">
           <div className="space-y-8">
             {setupSteps.map((step, index) => (
               <div key={index} className="flex items-start space-x-6">
@@ -380,7 +380,7 @@ export default function Home() {
           </div>
 
           <Tabs defaultValue="components" className="mx-auto w-full max-w-4xl">
-            <TabsList className="mb-8 grid w-full grid-cols-3">
+            <TabsList className="mb-8 grid w-full grid-cols-1 gap-2 sm:grid-cols-3">
               <TabsTrigger value="components">
                 {dictionary.components.tabs.ui}
               </TabsTrigger>
@@ -392,7 +392,7 @@ export default function Home() {
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="components" className="space-y-6">
+            <TabsContent value="components" className="mt-10 space-y-6 sm:mt-0">
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <Card>
                   <CardHeader>
@@ -430,7 +430,7 @@ export default function Home() {
               </div>
             </TabsContent>
 
-            <TabsContent value="theme" className="space-y-6">
+            <TabsContent value="theme" className="mt-10 space-y-6 sm:mt-0">
               <Card>
                 <CardHeader>
                   <CardTitle>{dictionary.components.theme.title}</CardTitle>
@@ -438,7 +438,7 @@ export default function Home() {
                     {dictionary.components.theme.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="flex items-center space-x-4">
+                <CardContent className="flex flex-wrap items-center gap-4">
                   <div className="flex items-center space-x-2">
                     <Sun className="h-4 w-4" />
                     <span>{dictionary.components.theme.light}</span>
@@ -455,7 +455,7 @@ export default function Home() {
               </Card>
             </TabsContent>
 
-            <TabsContent value="testing" className="space-y-6">
+            <TabsContent value="testing" className="mt-10 space-y-6 sm:mt-0">
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <Card>
                   <CardHeader>
