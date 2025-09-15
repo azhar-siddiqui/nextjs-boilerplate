@@ -70,49 +70,57 @@ export default function Home() {
     {
       icon: <SiNextdotjs className="h-6 w-6" />,
       title: dictionary.features.nextjs.title,
-      description: dictionary.features.nextjs.description,
+      description:
+        'Latest Next.js 15 with App Router, Server Components, and Turbopack for 700x faster builds. Includes API routes, middleware, and optimized performance.',
       color: 'text-foreground',
     },
     {
       icon: <SiTypescript color={'default'} className="h-6 w-6" />,
       title: dictionary.features.typescript.title,
-      description: dictionary.features.typescript.description,
+      description:
+        '100% TypeScript with strict type checking, IntelliSense support, and advanced type inference. Prevents runtime errors with compile-time validation.',
       color: 'text-foreground',
     },
     {
       icon: <SiPostgresql color={'default'} className="h-6 w-6" />,
       title: dictionary.features.prisma.title,
-      description: dictionary.features.prisma.description,
+      description:
+        'Type-safe database operations with Prisma ORM and PostgreSQL. Auto-generated types, migrations, and connection pooling for optimal performance.',
       color: 'text-foreground',
     },
     {
       icon: <SiClerk color={'default'} className="h-6 w-6" />,
       title: dictionary.features.clerk.title,
-      description: dictionary.features.clerk.description,
+      description:
+        'Complete authentication solution with social logins, user management, and session handling. Pre-built sign-in/sign-up components and middleware protection.',
       color: 'text-foreground',
     },
     {
       icon: <SiShadcnui className="h-6 w-6" />,
       title: dictionary.features.shadcn.title,
-      description: dictionary.features.shadcn.description,
+      description:
+        '50+ accessible, customizable UI components built on Radix UI primitives. Dark/light theme support with Tailwind CSS and full TypeScript integration.',
       color: 'text-foreground',
     },
     {
       icon: <SiLocal className="h-6 w-6" />,
       title: dictionary.features.i18n.title,
-      description: dictionary.features.i18n.description,
+      description:
+        'Multi-language support with Next.js internationalization. Dynamic routing, locale detection, and dictionary-based content management.',
       color: 'text-foreground',
     },
     {
       icon: <SiCypress color={'default'} className="h-6 w-6" />,
       title: dictionary.features.cypress.title,
-      description: dictionary.features.cypress.description,
+      description:
+        'End-to-end and component testing with Cypress. Visual testing, API mocking, and CI/CD integration for comprehensive test coverage.',
       color: 'text-foreground',
     },
     {
       icon: <SiJest color={'default'} className="h-6 w-6" />,
       title: dictionary.features.jest.title,
-      description: dictionary.features.jest.description,
+      description:
+        'Unit testing with Jest and React Testing Library. Snapshot testing, mocking utilities, and coverage reports for reliable code quality.',
       color: 'text-foreground',
     },
   ];
@@ -120,7 +128,8 @@ export default function Home() {
   const setupSteps: SetupStep[] = [
     {
       title: dictionary.setup.steps.clone.title,
-      description: dictionary.setup.steps.clone.description,
+      description:
+        'Clone the repository with Git and navigate to the project directory. This gives you access to the full codebase with all dependencies and configurations.',
       commandMap: {
         npm: 'git clone https://github.com/The-Lone-Druid/nextjs-boilerplate.git && cd nextjs-boilerplate && npm install',
         yarn: 'git clone https://github.com/The-Lone-Druid/nextjs-boilerplate.git && cd nextjs-boilerplate && yarn install',
@@ -130,7 +139,8 @@ export default function Home() {
     },
     {
       title: dictionary.setup.steps.env.title,
-      description: dictionary.setup.steps.env.description,
+      description:
+        'Configure environment variables for database connection, authentication keys, and other sensitive configuration. Copy .env.example to .env.local and fill in your actual values.',
       commandMap: {
         bash: 'cp .env.example .env.local',
       },
@@ -138,7 +148,8 @@ export default function Home() {
     },
     {
       title: dictionary.setup.steps.database.title,
-      description: dictionary.setup.steps.database.description,
+      description:
+        'Set up PostgreSQL database with Prisma ORM. Run migrations to create tables and generate the Prisma client for type-safe database operations.',
       commandMap: {
         npm: 'npx prisma migrate dev && npx prisma generate',
         yarn: 'yarn prisma migrate dev && yarn prisma generate',
@@ -148,7 +159,8 @@ export default function Home() {
     },
     {
       title: dictionary.setup.steps.dev.title,
-      description: dictionary.setup.steps.dev.description,
+      description:
+        'Launch the Next.js development server with hot reloading. The app will be available at http://localhost:3000 with full TypeScript support and optimized builds.',
       commandMap: {
         npm: 'npm run dev',
         yarn: 'yarn dev',
@@ -212,40 +224,57 @@ export default function Home() {
             {dictionary.hero.description}
           </p>
           <div className="mb-12 flex flex-col justify-center gap-4 sm:flex-row">
-            <Button size="lg" className="h-12 px-8 text-lg">
-              <Zap className="mr-2 h-5 w-5" />
-              {dictionary.hero.getStarted}
+            <Button size="lg" className="h-12 px-8 text-lg" asChild>
+              <a
+                href="https://github.com/The-Lone-Druid/nextjs-boilerplate#-quick-start"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Zap className="mr-2 h-5 w-5" />
+                {dictionary.hero.getStarted}
+              </a>
             </Button>
-            <Button variant="outline" size="lg" className="h-12 px-8 text-lg">
-              <Code className="mr-2 h-5 w-5" />
-              {dictionary.hero.viewDocs}
+            <Button
+              variant="outline"
+              size="lg"
+              className="h-12 px-8 text-lg"
+              asChild
+            >
+              <a
+                href="https://github.com/The-Lone-Druid/nextjs-boilerplate#readme"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Code className="mr-2 h-5 w-5" />
+                {dictionary.hero.viewDocs}
+              </a>
             </Button>
           </div>
 
           {/* Quick Stats */}
           <div className="mx-auto grid max-w-2xl grid-cols-2 gap-6 md:grid-cols-4">
             <div className="text-center">
-              <div className="text-primary text-2xl font-bold">15+</div>
+              <div className="text-primary text-2xl font-bold">Managable</div>
               <div className="text-muted-foreground text-sm">
                 {dictionary.hero.stats.components}
               </div>
             </div>
             <div className="text-center">
-              <div className="text-primary text-2xl font-bold">3</div>
+              <div className="text-primary text-2xl font-bold">Flexible</div>
               <div className="text-muted-foreground text-sm">
                 {dictionary.hero.stats.languages}
               </div>
             </div>
             <div className="text-center">
-              <div className="text-primary text-2xl font-bold">100%</div>
+              <div className="text-primary text-2xl font-bold">Type Safe</div>
               <div className="text-muted-foreground text-sm">
                 {dictionary.hero.stats.typescript}
               </div>
             </div>
             <div className="text-center">
-              <div className="text-primary text-2xl font-bold">Jest</div>
+              <div className="text-primary text-2xl font-bold">Reliable</div>
               <div className="text-muted-foreground text-sm">
-                & {dictionary.hero.stats.testing.split(' ')[1]}
+                {dictionary.hero.stats.testing}
               </div>
             </div>
           </div>
@@ -364,6 +393,92 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Developer Guides */}
+      <section className="container mx-auto px-4 py-20">
+        <div className="mb-16 text-center">
+          <h2 className="text-foreground mb-4 text-4xl font-bold">
+            Developer Guides
+          </h2>
+          <p className="text-muted-foreground mx-auto max-w-2xl text-xl">
+            Comprehensive guides to help you master the development workflow and
+            best practices
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              title: 'Development Environment',
+              description:
+                'Set up your local development environment with all necessary tools and configurations',
+              href: 'https://github.com/The-Lone-Druid/nextjs-boilerplate/blob/main/guides/development-environment.md',
+              icon: <Settings className="h-6 w-6" />,
+            },
+            {
+              title: 'Internationalization',
+              description:
+                'Implement multi-language support with Next.js internationalization features',
+              href: 'https://github.com/The-Lone-Druid/nextjs-boilerplate/blob/main/guides/Internationalization.md',
+              icon: <SiLocal className="h-6 w-6" />,
+            },
+            {
+              title: 'Lazy Loading',
+              description:
+                'Optimize your application performance with code splitting and lazy loading techniques',
+              href: 'https://github.com/The-Lone-Druid/nextjs-boilerplate/blob/main/guides/lazy-loading.md',
+              icon: <Zap className="h-6 w-6" />,
+            },
+            {
+              title: 'Package Bundling',
+              description:
+                'Understand the build process and how to optimize bundle sizes for production',
+              href: 'https://github.com/The-Lone-Druid/nextjs-boilerplate/blob/main/guides/package-bundling.md',
+              icon: <SiNextdotjs className="h-6 w-6" />,
+            },
+            {
+              title: 'Testing with Jest',
+              description:
+                'Write unit tests and integration tests using Jest and React Testing Library',
+              href: 'https://github.com/The-Lone-Druid/nextjs-boilerplate/blob/main/guides/testing-with-jest.md',
+              icon: <SiJest className="h-6 w-6" />,
+            },
+            {
+              title: 'Testing with Cypress',
+              description:
+                'Create end-to-end tests and component tests with Cypress for comprehensive coverage',
+              href: 'https://github.com/The-Lone-Druid/nextjs-boilerplate/blob/main/guides/testing-with-cypress.md',
+              icon: <SiCypress className="h-6 w-6" />,
+            },
+          ].map((guide, index) => (
+            <Card
+              key={index}
+              className="transition-shadow duration-300 hover:shadow-lg"
+            >
+              <CardHeader>
+                <div className="mb-2 flex items-center space-x-3">
+                  <div className="text-primary">{guide.icon}</div>
+                  <CardTitle className="text-xl">{guide.title}</CardTitle>
+                </div>
+                <CardDescription className="text-base leading-relaxed">
+                  {guide.description}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button variant="outline" className="w-full" asChild>
+                  <a
+                    href={guide.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Read Guide
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </section>
 

@@ -33,6 +33,70 @@ const eslintConfig = [
       'react/react-in-jsx-scope': 'off',
     },
   },
+  // Jest test files configuration
+  {
+    files: [
+      '**/__tests__/**/*.{js,jsx,ts,tsx}',
+      '**/*.test.{js,jsx,ts,tsx}',
+      '**/*.spec.{js,jsx,ts,tsx}',
+    ],
+    languageOptions: {
+      globals: {
+        // Jest globals
+        describe: 'readonly',
+        it: 'readonly',
+        test: 'readonly',
+        expect: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+        jest: 'readonly',
+        // Testing Library globals
+        render: 'readonly',
+        screen: 'readonly',
+        fireEvent: 'readonly',
+        waitFor: 'readonly',
+        act: 'readonly',
+      },
+    },
+    rules: {
+      // Disable rules that don't apply to test files
+      '@next/next/no-img-element': 'off',
+      'react/jsx-uses-react': 'off',
+      'react/react-in-jsx-scope': 'off',
+      // Allow console statements in tests
+      'no-console': 'off',
+    },
+  },
+  // Cypress test files configuration
+  {
+    files: ['cypress/**/*.{js,jsx,ts,tsx}'],
+    languageOptions: {
+      globals: {
+        // Cypress globals
+        cy: 'readonly',
+        Cypress: 'readonly',
+        // Mocha globals (used by Cypress)
+        describe: 'readonly',
+        it: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        before: 'readonly',
+        after: 'readonly',
+        context: 'readonly',
+        specify: 'readonly',
+      },
+    },
+    rules: {
+      // Disable rules that don't apply to Cypress files
+      '@next/next/no-img-element': 'off',
+      'react/jsx-uses-react': 'off',
+      'react/react-in-jsx-scope': 'off',
+      // Allow console statements in Cypress tests
+      'no-console': 'off',
+    },
+  },
   {
     ignores: [
       'node_modules/**',
@@ -45,6 +109,9 @@ const eslintConfig = [
       'src/generated/**',
       '*.config.js',
       '*.config.mjs',
+      'jest.setup.ts',
+      'jest.config.ts',
+      'cypress.config.ts',
     ],
   },
 ];

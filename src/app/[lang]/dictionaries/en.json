@@ -4,9 +4,9 @@
     "version": "v0.1.0"
   },
   "language": {
-    "english": "🇺🇸 English",
-    "spanish": "🇪🇸 Español",
-    "french": "🇫🇷 Français"
+    "english": "English",
+    "spanish": "Español",
+    "french": "Français"
   },
   "hero": {
     "badge": "🚀 Production-Ready Boilerplate",
