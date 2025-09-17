@@ -28,6 +28,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${outfit.variable} ${jetbrainsMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         {/* Uncomment this code if you want to use Clerk for authentication */}
         {/* <ClerkProvider

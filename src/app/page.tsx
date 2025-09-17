@@ -5,7 +5,7 @@ import { AnimatedThemeToggler } from '@/components/magicui/animated-theme-toggle
 import { IconCloud } from '@/components/magicui/icon-cloud';
 import { ScriptCopyBtn } from '@/components/magicui/script-copy-btn';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -47,7 +47,9 @@ import {
   TestTube,
   Zap,
 } from 'lucide-react';
+import Link from 'next/link';
 import { useState } from 'react';
+import { AuroraText } from '../components/ui/aurora-text';
 
 type Locale = 'en' | 'es' | 'fr';
 
@@ -204,6 +206,12 @@ export default function Home() {
               </SelectContent>
             </Select>
             <AnimatedThemeToggler />
+            <Link
+              href="/dashboard"
+              className={buttonVariants({ variant: 'outline' })}
+            >
+              Dashboard
+            </Link>
           </div>
         </div>
       </header>
@@ -215,7 +223,9 @@ export default function Home() {
             {dictionary.hero.badge}
           </Badge>
           <h1 className="text-foreground mb-6 text-5xl leading-tight font-bold md:text-7xl">
-            {dictionary.hero.title}
+            <AuroraText colors={['var(--primary)', 'var(--foreground)']}>
+              {dictionary.hero.title}
+            </AuroraText>
             <span className="text-primary mt-2 block">
               {dictionary.hero.titleHighlight}
             </span>

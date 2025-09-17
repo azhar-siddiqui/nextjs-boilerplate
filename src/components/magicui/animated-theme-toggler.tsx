@@ -59,16 +59,15 @@ export const AnimatedThemeToggler = ({ className }: props) => {
   // Render a placeholder during SSR to avoid hydration mismatch
   if (!mounted) {
     return (
-      <button
+      <Button
         ref={buttonRef}
-        className={cn(
-          'focus-visible:ring-ring ring-offset-background hover:bg-accent hover:text-accent-foreground inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
-          className
-        )}
+        className={cn(className)}
         aria-label="Toggle theme"
+        variant="outline"
+        size="icon"
       >
         <Moon className="h-4 w-4" />
-      </button>
+      </Button>
     );
   }
 
